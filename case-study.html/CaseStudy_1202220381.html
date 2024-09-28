@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background-color: #f7f7f7; 
+            position: relative;
+            overflow: hidden; 
+        }
+        .blob {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px; 
+            height: 300px; 
+            background: #935050; 
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotate(30deg); 
+            filter: blur(80px); 
+            z-index: 0; 
+        }
+        .profile-card {
+            position: relative;
+            width: 500px;
+            height: 250px;
+            background-color: #935050;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1; 
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+        }
+        .social-media {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        .social-media div {
+            text-align: center;
+        }
+        .social-media a {
+            text-decoration: none;
+            color: black;
+        }
+        .clock {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #935050; 
+            font-size: 18px;
+            background-color: #fff; 
+            padding: 5px 10px;
+            border-radius: 5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob"></div>
+
+    <div class="profile-card">
+        
+        <div class="profile-info">
+            <div style="flex-shrink: 0;">
+                <div style="width: 120px; height: 120px; border-radius: 50%; background-color: #f0f0f0; overflow: hidden;">
+                    <img src="image.jpg" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+          
+            <div style="flex-grow: 1; margin-left: 20px; color: white;">
+                <h2 style="margin: 0;">Titisya Dewi – 1202220381</h2>
+                <p style="margin: 5px 0 0;">SI-46-06</p>
+            </div>
+        </div>
+
+    
+        <div class="social-media">
+            <div>
+                <a href="https://www.instagram.com/_shaszy" target="_blank">
+                    <i class="fab fa-instagram" style="font-size: 50px;"></i>
+                    <p style="margin-top: 10px;">Instagram</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://github.com/titisyads" target="_blank">
+                    <i class="fab fa-github" style="font-size: 50px;"></i>
+                    <p style="margin-top: 10px;">GitHub</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="clock" id="clock"></div>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString(undefined, options);
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = `${dateString} | ${timeString}`;
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); 
+    </script>
+
+</body>
+</html>
